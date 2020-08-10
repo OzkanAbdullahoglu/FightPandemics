@@ -306,7 +306,9 @@ const Feed = (props) => {
   const handleCreatePost = () => {
     if (isAuthenticated) {
       dispatchAction(TOGGLE_STATE, "showCreatePostModal");
+      sessionStorage.removeItem("createPostAttemptLoggedOut");
     } else {
+      sessionStorage.setItem("createPostAttemptLoggedOut", true);
       history.push(LOGIN);
     }
   };
